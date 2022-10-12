@@ -1,4 +1,17 @@
-<?php ob_start()?>
+<?php 
+require_once "Book.class.php";
+$book_1 = new Book(1,"Algo de sim" , 340, "jerry", "algo.png");
+$book_2 = new Book(2,"France" , 340, "alain", "france.png");
+$book_3 = new Book(1,"JavaScript pour les nulls" , 250, "Alain", "JS.png");
+$book_4 = new Book(2,"Virus Africain" , 500, "alain", "virus.png");
+
+
+$books = [$book_1, $book_2, $book_3, $book_4];
+
+
+ob_start()
+
+?>
 
     <table class="table text-center">
             <tr class="table-dark">
@@ -8,40 +21,21 @@
                 <th>Auteur</th>
                 <th colspan="2">Actions</th>
             </tr>
+            <?php foreach($books as $book): ?>
+
             <tr>
-                <td class="align-middle"><img src="public/images/algo.png" width="85px" /></td>
-                <td class="align-middle">Algo de sim</td>
-                <td class="align-middle">340</td>
-                <td class="align-middle">Jerry</td>
+                <td class="align-middle"><img src="public/images/<?= $book->getImage() ?>" width="85px" /></td>
+                <td class="align-middle"><?= $book->getTitle() ?></td>
+                <td class="align-middle"><?= $book->getPages() ?></td>
+                <td class="align-middle"><?= $book->getAuthor()?></td>
                 <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
                 <td class="align-middle"><a class="btn btn-danger">Supprimer</a></td>
             </tr>
-            <tr>
-                <td class="align-middle"><img src="public/images/france.png" width="85px" /></td>
-                <td class="align-middle">France</td>
-                <td class="align-middle">340</td>
-                <td class="align-middle">Alain</td>
-                <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-                <td class="align-middle"><a class="btn btn-danger">Supprimer</a></td>
-            </tr>
-            <tr>
-                <td class="align-middle"><img src="public/images/JS.png" width="85px" /></td>
-                <td class="align-middle">JavaScript pour les nulls</td>
-                <td class="align-middle">250</td>
-                <td class="align-middle">Kayumba</td>
-                <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-                <td class="align-middle"><a class="btn btn-danger">Supprimer</a></td>
-            </tr>
-            <tr>
-                <td class="align-middle"><img src="public/images/virus.png" width="85px" /></td>
-                <td class="align-middle">Virus Africain</td>
-                <td class="align-middle">500</td>
-                <td class="align-middle">Alain kazadi</td>
-                <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-                <td class="align-middle"><a class="btn btn-danger">Supprimer</a></td>
-            </tr>
+            <?php endforeach; ?>
+            
 
         </table>
+        
         <a href="" class="btn btn-success d-block">Ajouter</a>
 
 <?php
