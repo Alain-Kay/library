@@ -7,12 +7,15 @@ class Book{
     private $author;
     private $image;
 
+   
+
     public function __construct($id, $title, $pages, $author, $image){
         $this->id = $id;
         $this->title = $title;
         $this->pages = $pages;
         $this->author = $author;
         $this->image = $image;
+       
     }
     
     public function getId(){
@@ -51,7 +54,7 @@ class Book{
         $this->image = $image;
     }
 
-    
+
 
 
 }
